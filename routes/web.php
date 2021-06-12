@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::get('companies', [\App\Http\Controllers\CompaniesController::class, 'index']);
+    Route::get('companies', [\App\Http\Controllers\CompaniesController::class, 'index'])->name('company.index');
+    Route::get('select/{id}', [\App\Http\Controllers\CompaniesController::class, 'select'])->name('company.select');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
