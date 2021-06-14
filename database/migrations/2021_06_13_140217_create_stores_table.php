@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFinancialYearsTable extends Migration
+class CreateStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateFinancialYearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('financial_years', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->char('name', 9);
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->boolean('is_active')->default(0);
+            $table->string('name');
+            $table->string('contact_person');
+            $table->string('mobile_number', 50);
+            $table->string('telephone', 50)->nullable();
+            $table->string('fax', 50)->nullable();
+            $table->string('email');
+            $table->boolean('is_active');
             $table->timestamps();
             $table->foreign('company_id')->on('companies')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
         });
@@ -32,6 +35,6 @@ class CreateFinancialYearsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('financial_years');
+        Schema::dropIfExists('stores');
     }
 }

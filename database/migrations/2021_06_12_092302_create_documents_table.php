@@ -35,15 +35,15 @@ class CreateDocumentsTable extends Migration
             $table->unsignedInteger('courier_id');
             $table->string('tracking_number');
             $table->string('document_image');
-            $table->unsignedBigInteger('total_nett_price');
-            $table->unsignedBigInteger('total_excl');
-            $table->unsignedBigInteger('total_discount');
-            $table->unsignedBigInteger('total_tax');
-            $table->unsignedBigInteger('total_amount');
-            $table->boolean('on_hold');
+            $table->bigInteger('total_nett_price');
+            $table->bigInteger('total_excl');
+            $table->bigInteger('total_discount');
+            $table->bigInteger('total_tax');
+            $table->bigInteger('total_amount');
             $table->boolean('is_locked');
             $table->boolean('on_hold');
             $table->timestamps();
+            $table->foreign('created_by')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

@@ -35,7 +35,6 @@ class CreateEntitiesTable extends Migration
             $table->unsignedInteger('delivery_country');
             $table->string('delivery_code', 20);
             $table->bigInteger('credit_limit')->nullable();
-            $table->bigInteger('credit_limit')->nullable();
             $table->bigInteger('delivery_group_id')->nullable();
             $table->char('currency_code', 3)->nullable();
             $table->unsignedTinyInteger('payment_terms')->default(1);

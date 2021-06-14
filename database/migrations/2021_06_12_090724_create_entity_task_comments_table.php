@@ -23,7 +23,7 @@ class CreateEntityTaskCommentsTable extends Migration
             $table->unsignedBigInteger('assigned_to');
             $table->timestamps();
             $table->foreign('entity_task_id')->on('entity_tasks')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('create_by')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('created_by')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('assigned_to')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }

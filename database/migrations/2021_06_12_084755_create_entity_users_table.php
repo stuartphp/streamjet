@@ -15,7 +15,7 @@ class CreateEntityUsersTable extends Migration
     {
         Schema::create('entity_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('entity_id');
+            $table->unsignedBigInteger('entity_id');
             $table->string('name');
             $table->string('job_title');
             $table->string('email');
@@ -29,7 +29,7 @@ class CreateEntityUsersTable extends Migration
             $table->string('twitter_id')->nullable();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
-            $table->foreign('entity_id')->on('entities')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('entity_id')->on('entities')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

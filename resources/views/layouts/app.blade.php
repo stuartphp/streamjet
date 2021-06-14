@@ -23,8 +23,6 @@
 
         <div class="min-h-screen bg-gray-100">
         @if(session()->has('company_id'))
-
-        @else
             @livewire('navigation-menu')
         @endif
 
