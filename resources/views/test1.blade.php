@@ -41,8 +41,8 @@
     </div>
     <main class="px-16 py-6 bg-gray-100 md:col-span-2">
         <div class="flex justify-center md:justify-end">
-            <a href="#" class="btn text-primary border-primary md:border-2 hover:bg-black hover:text-white transition ease-out duration-500">Login</a>
-            <a href="#" class="btn text-primary border-primary md:border-2 ml-2 hover:bg-black hover:text-white transition ease-out duration-500">Register</a>
+            <a href="/login" class="btn text-primary border-primary md:border-2 hover:bg-black hover:text-white transition ease-out duration-500">Login</a>
+            <a href="/register" class="btn text-primary border-primary md:border-2 ml-2 hover:bg-black hover:text-white transition ease-out duration-500">Register</a>
         </div>
         <header>
             <h2 class="text-gray-700 text-6xl font-semibold">
