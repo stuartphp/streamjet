@@ -30,7 +30,7 @@ class CreateCalendarsTable extends Migration
             $table->timestamps();
             $table->foreign('company_id')->on('companies')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('entity_id')->on('entities')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign('create_by')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('created_by')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('assigned_to')->on('users')->references('id')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }

@@ -46,8 +46,8 @@ class CompaniesController extends Controller
         session()->put('site_access', $site_access);
         session()->put('company_id', $id);
         session()->put('trading_name', $company->trading_name);
-        session()->put('financial_year', $company->financial_year);
-        session()->put('financial_period', $company->financial_period);
+        session()->put('financial_year_id', $company->financial_year_id);
+        session()->put('accounting_period_id', $company->accounting_period_id);
 
         // Get permissions
         $id =auth()->user()->id;
