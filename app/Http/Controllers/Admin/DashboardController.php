@@ -9,7 +9,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        if(session()->has('company_id'))
+        {
+          return view('admin.dashboard');
+        }
+        return redirect('companies');
     }
 
 }
