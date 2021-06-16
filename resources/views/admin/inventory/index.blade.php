@@ -1,0 +1,3 @@
+
+    @livewire('admin.inventory.index')
+

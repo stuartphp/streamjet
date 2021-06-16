@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+ @if(!session()->has('company_id'))
+ <meta http-equiv="refresh" content="0; URL={{ url('/companies') }}" />
+ @endif
         @livewireStyles
 
         <!-- Scripts -->
