@@ -66,7 +66,7 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $cat->id}}</td>
                                 <td class="border px-4 py-2">{{ $cat->name}}</td>
-                                <td class="border px-4 py-2">{{ $cat->parent_id > 0 ? $cat->parent->name : '' }}</td>
+                                <td class="border px-4 py-2">{{ ($cat->parent_id > 0) ? $parents[$cat->parent_id] : '' }}</td>
                                 <td class="border px-4 py-2">{{ $cat->is_active ? 'Active' : 'Not-Active'}}</td>
                                 <td class="border px-4 py-2">
                                 <x-jet-button wire:click="itemEdit( {{ $cat->id}})" class="bg-orange-500 hover:bg-orange-700">

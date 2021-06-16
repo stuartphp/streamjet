@@ -14,6 +14,7 @@ class Categories extends Component
     public $sortBy = 'id';
     public $sortAsc = true;
     public $selectCat;
+    public $parents;
     public $state;
     public $rules = [
         'state.name' => 'required',
@@ -65,7 +66,8 @@ class Categories extends Component
 
     public function getCategories()
     {
-        return ProductCategory::with(['parent'])->where('company_id', session()->get('company_id'))
+        $this->parents = ProductCategory::where('company_id', session()->get('company_id'))->where('parent_id', 0)->orderBy('name')->pluck('name', 'id')->toArray();
+        return ProductCategory::where('company_id', session()->get('company_id'))
             ->orderBy('parent_id', 'asc')
             ->orderBy('name', 'asc')
             ->get();
