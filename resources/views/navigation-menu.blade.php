@@ -1,19 +1,56 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-200 sticky top-0 z-50">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-10">
+            <div class="">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="flex mt-2 items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark class="block h-5 w-auto" />
                     </a>
+                    <a href="{{ url('companies') }}" class="ml-3 text-gray-400 hover:text-gray-500">{{ session()->get('trading_name') }}</a>
                 </div>
+
+            </div>
+            <div class="flex">
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Companies') }}
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" title="Dashboard">
+                        <x-icon-dashboard class="w-5 h-5 text-gray-500 hover:text-gray-600"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-graph-up class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Sales"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-cart class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Purchases"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.inventory.index') }}" :active="request()->routeIs('admin.inventory.index')">
+                        <x-icon-box class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Inventory"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-calendar class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Calendar"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-person class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Customers"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-truck class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Suppliers"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-book class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Accounting"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-suit-heart class="w-5 h-5 text-gray-500 hover:text-gray-600" title="HR"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-wallet2 class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Payroll"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="#">
+                        <x-icon-people class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Users"/>
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.setup.index') }}" :active="request()->routeIs('admin.setup.index')">
+                        <x-icon-gear class="w-5 h-5 text-gray-500 hover:text-gray-600" title="Setup"/>
                     </x-jet-nav-link>
                 </div>
             </div>

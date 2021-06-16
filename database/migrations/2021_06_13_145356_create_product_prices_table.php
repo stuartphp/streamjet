@@ -29,6 +29,10 @@ class CreateProductPricesTable extends Migration
             $table->double('special')->nullable();
             $table->dateTime('special_from')->nullable();
             $table->dateTime('special_to')->nullable();
+            $table->boolean('allow_tax')->default(1);
+            $table->char('purchase_tax_type', 2);
+            $table->char('sales_tax_type', 2);
+            $table->boolean('sales_commission_item');
             $table->timestamps();
             $table->foreign('product_id')->on('products')->references('id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('store_id')->on('stores')->references('id')->cascadeOnUpdate()->cascadeOnDelete();

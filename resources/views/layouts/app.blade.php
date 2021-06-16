@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+ @if(!session()->has('company_id'))
+ <meta http-equiv="refresh" content="0; URL={{ url('/companies') }}" />
+ @endif
         @livewireStyles
 
         <!-- Scripts -->
@@ -43,7 +45,6 @@
 
         @stack('modals')
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
         @livewireScripts
     </body>
 </html>

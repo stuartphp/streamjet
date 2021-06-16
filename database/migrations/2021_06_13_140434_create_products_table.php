@@ -24,17 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('barcode')->nullable();
             $table->string('isbn_number')->nullable();
             $table->unsignedBigInteger('product_unit_id');
-            $table->char('currency', 3);
-            $table->unsignedInteger('weight');
-            $table->unsignedInteger('length');
-            $table->unsignedInteger('width');
-            $table->unsignedInteger('height');
-            $table->date('expiry_date');
             $table->string('main_image');
-            $table->boolean('allow_tax')->default(1);
-            $table->char('purchase_tax_type', 2);
-            $table->char('sales_tax_type', 2);
-            $table->boolean('sales_commission_item');
             $table->unsignedInteger('viewed');
             $table->boolean('is_service');
             $table->boolean('is_active');
