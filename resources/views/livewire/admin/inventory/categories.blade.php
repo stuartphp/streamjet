@@ -75,7 +75,7 @@
                                                 <li>Delete</li>
                                             </ul>
                                         </div>
-                                    </div>
+                                    </div>                           
                                 </td>
                             </tr>
                         @endforeach

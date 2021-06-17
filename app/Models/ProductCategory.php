@@ -16,8 +16,4 @@ class ProductCategory extends Model
         'is_active'
     ];
 
-    public function parent()
-    {
-        return $this->belongsTo(ProductCategory::class, 'id', 'parent_id');
-    }
 }
