@@ -32,54 +32,56 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-2 py-2">
                 <table class="table-auto w-full">
                     <thead>
-                        <tr>
-                            <th class="px-4 py-2">
+                        <tr class="border-b">
+                            <th class="py-2">
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('id')">ID</button>
                                     <x-icon-sort sortField="id" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                                 </div>
                             </th>
-                            <th class="px-4 py-2">
+                            <th class="py-2">
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('name')">Name</button>
                                     <x-icon-sort sortField="name" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                                 </div>
                             </th>
-                            <th class="px-4 py-2">
+                            <th class="py-2">
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('price')">Parent</button>
                                     <x-icon-sort sortField="price" :sort-by="$sortBy" :sort-asc="$sortAsc" />
                                 </div>
                             </th>
-
-                                <th class="px-4 py-2">
-                                    Status
-                                </th>
-
-                            <th class="px-4 py-2">
+                            <th class="py-2">
+                                Status
+                            </th>
+                            <th class="py-2 text-right">
                                 Actions
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($categories as $cat)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $cat->id}}</td>
-                                <td class="border px-4 py-2">{{ $cat->name}}</td>
-                                <td class="border px-4 py-2">{{ $cat->parent_id > 0 ? $cat->parent->name : '' }}</td>
-                                <td class="border px-4 py-2">{{ $cat->is_active ? 'Active' : 'Not-Active'}}</td>
-                                <td class="border px-4 py-2">
-                                <x-jet-button wire:click="itemEdit( {{ $cat->id}})" class="bg-orange-500 hover:bg-orange-700">
-                                    Edit
-                                </x-jet-button>
-                                    <x-jet-danger-button wire:click="itemDelete( {{ $cat->id}})" wire:loading.attr="disabled">
-                                        Delete
-                                    </x-jet-danger-button>
+                            <tr class="hover:bg-gray-100 border-b">
+                                <td class="py-1">{{ $cat->id}}</td>
+                                <td class="">{{ $cat->name}}</td>
+                                <td class="">{{ ($cat->parent_id > 0) ? $parents[$cat->parent_id] : '' }}</td>
+                                <td class="">{{ $cat->is_active ? 'Active' : 'Not-Active'}}</td>
+                                <td class="">
+                                    <div style="float: right;" x-data="{ show: false}">
+                                        <x-icon-dot-hor class="h-4" @click="show =! show"/>
+                                        <div x-show="show" class="z-40 bg-white border border-gray-500">
+                                            <ul>
+                                                <li>Edit</li>
+                                                <li>Delete</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div>{{ $categories->links() }}</div>
             </div>
         </div>
     </div>
@@ -97,8 +99,13 @@
             <select id="parent_id" wire:model.defer="state.parent_id" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm h-9 w-full">
                 <option value="">{{ __('Please Select') }}</option>
                 <option value="0">Parent</option>
-                @foreach ($selectCat as $cat)
-                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                @foreach ($parents as $k=>$v)
+                    <option value="{{ $k }}">{{ $v }}</option>
+                    @foreach ($selectCat as $cat)
+                        @if ($k==$cat->parent_id)
+                            <option value="{{ $cat->id }}"> - {{ $cat->name }}</option>
+                        @endif
+                    @endforeach
                 @endforeach
             </select>
             <x-jet-input-error for="state.parent_id" class="mt-2" />
